@@ -11,26 +11,26 @@ export interface IGuild {
 //#region Logs Module
 export interface ILogsModule {
 	enabled: boolean;
-	publicLogsChannel?: string;
-	privateLogsChannel?: string;
+	publicLogsChannel: string;
+	privateLogsChannel: string;
 
 	//////////////////////////
 	// Guild Members Events
 	//////////////////////////
 	guildMemberAdd: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 		ignoreBots: boolean;
 	};
 	guildMemberUpdate: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 		ignoreBots: boolean;
 		ignoredUsers: string[];
 	};
 	guildMemberRemove: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 		ignoreBots: boolean;
 	};
 
@@ -39,19 +39,19 @@ export interface ILogsModule {
 	//////////////////////////
 	MessageBulkDelete: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 		ignoredChannels: string[];
 	};
 	messageDelete: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 		ignoreBots: boolean;
 		ignoredChannels: string[];
 		ignoredUsers: string[];
 	};
 	messageUpdate: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 		ignoreBots: boolean;
 		ignoredChannels: string[];
 		ignoredUsers: string[];
@@ -62,27 +62,27 @@ export interface ILogsModule {
 	//////////////////////////
 	guildBanAdd: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 	};
 	guildBanRemove: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 	};
 	guildRoleCreate: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 	};
 	guildRoleDelete: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 	};
 	guildRoleUpdate: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 	};
 	guildUpdate: {
 		enabled: boolean;
-		channelId?: string;
+		channelId: string;
 	};
 }
 //#endregion
@@ -92,7 +92,7 @@ export interface IQOTDModule {
 	enabled: boolean;
 	channelId: string; // The channel where the bot will send the question of the day
 	proposedChannelId: string; // The channel where the bot will send the users questions proposals
-	pingedRoleId?: string; // The role that will be pinged when the question of the day is sent
+	pingedRoleId: string; // The role that will be pinged when the question of the day is sent
 	blacklist: string[]; // The list of users that can't propose questions
 	whitelist: string[]; // The list of users that can propose questions without the need of approval
 	questionsThreshold: number; // The number of questions left before the bot will send a message to the staff
@@ -126,16 +126,16 @@ export interface ITwitchModule {
 
 export interface ITMAlerts {
 	enabled: boolean;
-	defaultProfilePicture?: string; // Set this profile picture if the streamer is not streaming
-	liveProfilePicture?: string; // Set this profile picture if the streamer is streaming
+	defaultProfilePicture: string; // Set this profile picture if the streamer is not streaming
+	liveProfilePicture: string; // Set this profile picture if the streamer is streaming
 	streamerName: string; // The name of the streamer
-	infoLiveChannel?: string; // The channel where the bot will send the message when the streamer is live
-	pingedRole?: string; // The role that will be pinged when the streamer is live
+	infoLiveChannel: string; // The channel where the bot will send the message when the streamer is live
+	pingedRole: string; // The role that will be pinged when the streamer is live
 }
 
 export interface ITMAutoRoles {
 	enabled: boolean;
-	streamingRoleId?: string; // The role that will be given to the streamer when he is streaming
+	streamingRoleId: string; // The role that will be given to the streamer when he is streaming
 	streamers: ITMStreamersData[]; // The list of streamers
 }
 
@@ -151,6 +151,8 @@ export const createGuildObject = (guild: any): IGuild => {
 		modules: {
 			logs: {
 				enabled: false,
+				publicLogsChannel: '',
+				privateLogsChannel: '',
 				guildMemberAdd: {
 					enabled: false,
 					channelId: '',
