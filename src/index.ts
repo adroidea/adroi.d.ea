@@ -26,6 +26,7 @@ export interface ILogsModule {
 		enabled: boolean;
 		channelId?: string;
 		ignoreBots: boolean;
+		ignoredUsers: string[];
 	};
 	guildMemberRemove: {
 		enabled: boolean;
@@ -46,12 +47,14 @@ export interface ILogsModule {
 		channelId?: string;
 		ignoreBots: boolean;
 		ignoredChannels: string[];
+		ignoredUsers: string[];
 	};
 	messageUpdate: {
 		enabled: boolean;
 		channelId?: string;
 		ignoreBots: boolean;
 		ignoredChannels: string[];
+		ignoredUsers: string[];
 	};
 
 	//////////////////////////
@@ -142,7 +145,7 @@ export interface ITMStreamersData {
 }
 //#endregion
 
-export const createGuild = (guild: any): IGuild => {
+export const createGuildObject = (guild: any): IGuild => {
 	return {
 		id: guild.id,
 		modules: {
@@ -156,7 +159,8 @@ export const createGuild = (guild: any): IGuild => {
 				guildMemberUpdate: {
 					enabled: false,
 					channelId: '',
-					ignoreBots: false
+					ignoreBots: false,
+					ignoredUsers: []
 				},
 				guildMemberRemove: {
 					enabled: false,
@@ -172,13 +176,15 @@ export const createGuild = (guild: any): IGuild => {
 					enabled: false,
 					channelId: '',
 					ignoreBots: false,
-					ignoredChannels: []
+					ignoredChannels: [],
+					ignoredUsers: []
 				},
 				messageUpdate: {
 					enabled: false,
 					channelId: '',
 					ignoreBots: false,
-					ignoredChannels: []
+					ignoredChannels: [],
+					ignoredUsers: []
 				},
 				guildBanAdd: {
 					enabled: false,
