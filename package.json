@@ -1,7 +1,7 @@
 {
 	"name": "adroi.d.ea",
 	"description": "Types for the discord bot of the same name: Adroid_ea.",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"author": "adan-ea",
 	"license": "AGPL-3.0",
 	"repository": {
@@ -21,7 +21,6 @@
 		"typings"
 	],
 	"main": "dist/index.js",
-	"type": "module",
 	"types": "dist/index.d.ts",
 	"files": [
 		"dist/*"

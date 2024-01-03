@@ -145,7 +145,7 @@ export interface ITMStreamersData {
 }
 //#endregion
 
-export const createGuildObject = (guild: any): IGuild => {
+export function createGuildObject(guild: any): IGuild {
 	return {
 		id: guild.id,
 		modules: {
@@ -249,6 +249,4 @@ export const createGuildObject = (guild: any): IGuild => {
 			}
 		}
 	};
-};
-
-
+}
