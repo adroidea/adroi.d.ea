@@ -1,7 +1,7 @@
 export interface IGuild {
 	id: string;
 	modules: {
-		logs: ILogsModule;
+		auditLogs: IAuditLogsModule;
 		qotd: IQOTDModule;
 		tempVoice: ITempVoiceModule;
 		twitch: ITwitchModule;
@@ -9,7 +9,7 @@ export interface IGuild {
 }
 
 //#region Logs Module
-export interface ILogsModule {
+export interface IAuditLogsModule {
 	enabled: boolean;
 	publicLogsChannel: string;
 	privateLogsChannel: string;
@@ -37,7 +37,7 @@ export interface ILogsModule {
 	//////////////////////////
 	// Guild Messages Events
 	//////////////////////////
-	MessageBulkDelete: {
+	messageBulkDelete: {
 		enabled: boolean;
 		channelId: string;
 		ignoredChannels: string[];
@@ -149,7 +149,7 @@ export function createGuildObject(guild: any): IGuild {
 	return {
 		id: guild.id,
 		modules: {
-			logs: {
+			auditLogs: {
 				enabled: false,
 				publicLogsChannel: '',
 				privateLogsChannel: '',
@@ -169,7 +169,7 @@ export function createGuildObject(guild: any): IGuild {
 					channelId: '',
 					ignoreBots: false
 				},
-				MessageBulkDelete: {
+				messageBulkDelete: {
 					enabled: false,
 					channelId: '',
 					ignoredChannels: []
