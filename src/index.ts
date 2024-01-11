@@ -79,8 +79,13 @@ export interface IAuditLogsModule {
 	guildRoleUpdate: {
 		enabled: boolean;
 		channelId: string;
+		ignoredRoles: string[];
 	};
 	guildUpdate: {
+		enabled: boolean;
+		channelId: string;
+	};
+	botChangeLogs: {
 		enabled: boolean;
 		channelId: string;
 	};
@@ -206,11 +211,16 @@ export function createGuildObject(guild: any): IGuild {
 				},
 				guildRoleUpdate: {
 					enabled: false,
-					channelId: ''
+					channelId: '',
+					ignoredRoles: []
 				},
 				guildUpdate: {
 					enabled: false,
 					channelId: ''
+				},
+				botChangeLogs: {
+					enabled: true,
+					channelId: 'privateLogsChannel'
 				}
 			},
 			qotd: {
