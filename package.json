@@ -1,7 +1,7 @@
 {
 	"name": "adroi.d.ea",
 	"description": "Types for the discord bot of the same name: Adroid_ea.",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"author": "adan-ea",
 	"license": "AGPL-3.0",
 	"repository": {
@@ -27,7 +27,9 @@
 	],
 	"scripts": {
 		"build": "tsc",
-		"test": "jest --passWithNoTests"
+		"watch": "tsc -w",
+		"test": "jest --passWithNoTests",
+		"publish": "node .github/publish.js"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.11",

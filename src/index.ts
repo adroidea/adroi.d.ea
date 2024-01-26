@@ -136,11 +136,18 @@ export interface ITMAlerts {
 	streamerName: string; // The name of the streamer
 	infoLiveChannel: string; // The channel where the bot will send the message when the streamer is live
 	pingedRole: string; // The role that will be pinged when the streamer is live
+	notifyChange: boolean; // If the bot should notify when the streamer change their game
+	ignoredCategories: string[]; // The list of categories that the bot should ignore
+	message: {
+		// The messages that the bot will send
+		streamStart: string[];
+		gameChange: string[];
+	};
 }
 
 export interface ITMAutoRoles {
 	enabled: boolean;
-	streamingRoleId: string; // The role that will be given to the streamer when he is streaming
+	streamingRoleId: string; // The role that will be given to the streamer when they are streaming
 	streamers: ITMStreamersData[]; // The list of streamers
 }
 
@@ -249,7 +256,17 @@ export function createGuildObject(guild: any): IGuild {
 					liveProfilePicture: '',
 					streamerName: 'adan_ea',
 					infoLiveChannel: '',
-					pingedRole: ''
+					pingedRole: '',
+					notifyChange: false,
+					ignoredCategories: [],
+					message: {
+						streamStart: [
+							"{role}, **{streamer.name}** est en live ! C'est l'heure de laisser la réalité derrière toi et de plonger dans le monde de {game.name} !"
+						],
+						gameChange: [
+							'Après avoir dit au revoir à {oldGame.name}. Le moment est venu de jouer à {newGame.name} ! Quelles aventures nous attendent cette fois-ci ?'
+						]
+					}
 				},
 				autoRoles: {
 					enabled: false,
