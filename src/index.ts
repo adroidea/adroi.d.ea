@@ -101,6 +101,7 @@ export interface IQOTDModule {
 	blacklist: string[]; // The list of users that can't propose questions
 	whitelist: string[]; // The list of users that can propose questions without the need of approval
 	questionsThreshold: number; // The number of questions left before the bot will send a message to the staff
+	bannedWords: string[]; // The list of words that are not allowed in the questions
 }
 //#endregion
 
@@ -237,7 +238,8 @@ export function createGuildObject(guild: any): IGuild {
 				pingedRoleId: '',
 				blacklist: [],
 				whitelist: [],
-				questionsThreshold: 7
+				questionsThreshold: 7,
+				bannedWords: []
 			},
 			tempVoice: {
 				enabled: false,
