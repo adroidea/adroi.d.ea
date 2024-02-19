@@ -1,5 +1,6 @@
 export interface IGuild {
 	id: string;
+	locale: string;
 	modules: {
 		auditLogs: IAuditLogsModule;
 		qotd: IQOTDModule;
@@ -161,6 +162,7 @@ export interface ITMStreamersData {
 export function createGuildObject(guild: any): IGuild {
 	return {
 		id: guild.id,
+		locale: 'en',
 		modules: {
 			auditLogs: {
 				enabled: false,
