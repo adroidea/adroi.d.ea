@@ -250,7 +250,13 @@ export function createGuildObject(guild: any): IGuild {
 					unlocked: '🔊 Voice {USERNAME}',
 					locked: '🔒 Voice {USERNAME}'
 				},
-				userSettings: {}
+				userSettings: {
+					[`${guild.ownerId}`]: {
+						trustedUsers: [],
+						blockedUsers: [],
+						isPrivate: false
+					}
+				}
 			},
 			twitch: {
 				enabled: false,
