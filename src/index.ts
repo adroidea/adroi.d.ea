@@ -3,6 +3,7 @@ export interface IGuild {
 	locale: string;
 	modules: {
 		auditLogs: IAuditLogsModule;
+		jail: IJailModule;
 		qotd: IQOTDModule;
 		tempVoice: ITempVoiceModule;
 		twitch: ITwitchModule;
@@ -93,6 +94,16 @@ export interface IAuditLogsModule {
 }
 //#endregion
 
+//#region Jail Module
+export interface IJailModule {
+	enabled: boolean;
+	jailChannel: string; // The channel where the bot will send the users when they are jailed
+	minTime: number; // The minimum time a user can be jailed
+	maxTime: number; // The maximum time a user can be jailed
+	customMessage: string; // The message that the bot will send when a user is jailed
+}
+//#endregion
+
 //#region Question Of The Day Module
 export interface IQOTDModule {
 	enabled: boolean;
@@ -162,7 +173,7 @@ export interface ITMStreamersData {
 export function createGuildObject(guild: any): IGuild {
 	return {
 		id: guild.id,
-		locale: 'en',
+		locale: 'fr',
 		modules: {
 			auditLogs: {
 				enabled: false,
@@ -232,6 +243,13 @@ export function createGuildObject(guild: any): IGuild {
 					enabled: true,
 					channelId: 'privateLogsChannel'
 				}
+			},
+			jail: {
+				enabled: false,
+				jailChannel: '',
+				minTime: 10,
+				maxTime: 100,
+				customMessage: ''
 			},
 			qotd: {
 				enabled: false,
